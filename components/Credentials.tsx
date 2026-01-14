@@ -55,10 +55,10 @@ export default function Credentials() {
 
   return (
     <section className="section-padding bg-gradient-to-br from-green-50 via-green-100 to-green-150 relative overflow-hidden">
-      {/* Smooth wave transition from About section - bay bổng */}
+      {/* Smooth wave transition from About section - giống Up For Paws */}
       <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,0 Q180,50 360,30 Q540,10 720,40 Q900,20 1080,50 Q1260,30 1440,60 Q1440,30 1440,0 Q1080,0 720,0 Q360,0 0,0 Z" fill="#dcfce7"/>
+        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
+          <path d="M0,0 C120,120 240,100 360,120 C480,140 600,120 720,140 C840,160 960,100 1080,120 C1200,140 1320,80 1440,100 L1440,0 L0,0 Z" fill="#dcfce7"/>
         </svg>
       </div>
       
@@ -66,10 +66,10 @@ export default function Credentials() {
       <div className="absolute inset-0 bg-gradient-to-r from-green-100/50 via-transparent to-green-150/50"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-100/30 to-green-200/40"></div>
       
-      {/* Bottom smooth wave - bay bổng với độ cong lớn */}
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '120px' }}>
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,120 Q180,60 360,100 Q540,80 720,120 Q900,60 1080,100 Q1260,80 1440,120 Q1440,100 1440,80 Q1080,100 720,100 Q360,100 0,80 Q0,100 0,120 Z" fill="#14b8a6" opacity="0.5"/>
+      {/* Bottom smooth wave - giống Up For Paws với độ cong lớn hơn */}
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,150 C120,40 240,60 360,90 C480,120 600,100 720,120 C840,140 960,80 1080,100 C1200,120 1320,60 1440,80 L1440,150 L0,150 Z" fill="#14b8a6" opacity="0.6"/>
         </svg>
       </div>
       

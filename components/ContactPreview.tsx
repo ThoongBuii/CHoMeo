@@ -34,10 +34,10 @@ export default function ContactPreview() {
       <div className="absolute inset-0 bg-gradient-to-r from-teal-100/40 via-teal-150/30 to-teal-200/40"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-teal-50/60 via-transparent to-teal-100/50"></div>
       
-      {/* Smooth wave transition from SignUp section - bay bổng */}
+      {/* Smooth wave transition from SignUp section - giống Up For Paws */}
       <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 130" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,0 Q180,60 360,40 Q540,20 720,60 Q900,40 1080,80 Q1260,60 1440,100 Q1440,50 1440,0 Q1080,0 720,0 Q360,0 0,0 Z" fill="#ccfbf1"/>
+        <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
+          <path d="M0,0 C120,140 240,120 360,140 C480,160 600,140 720,160 C840,180 960,120 1080,140 C1200,160 1320,100 1440,120 L1440,0 L0,0 Z" fill="#ccfbf1"/>
         </svg>
       </div>
       

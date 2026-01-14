@@ -31,17 +31,17 @@ export default function CurriculumPreview() {
       <div className="absolute inset-0 bg-gradient-to-r from-green-100/60 via-green-150/40 to-green-200/60"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-green-50/80 via-transparent to-green-100/60"></div>
       
-      {/* Smooth wave transition from Credentials section - bay bổng */}
+      {/* Smooth wave transition from Credentials section - giống Up For Paws */}
       <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,0 Q180,50 360,30 Q540,10 720,40 Q900,20 1080,50 Q1260,30 1440,60 Q1440,30 1440,0 Q1080,0 720,0 Q360,0 0,0 Z" fill="#dcfce7"/>
+        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
+          <path d="M0,0 C120,120 240,100 360,120 C480,140 600,120 720,140 C840,160 960,100 1080,120 C1200,140 1320,80 1440,100 L1440,0 L0,0 Z" fill="#dcfce7"/>
         </svg>
       </div>
       
-      {/* Bottom smooth wave - bay bổng với độ cong lớn */}
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '130px' }}>
-        <svg viewBox="0 0 1440 130" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,130 Q180,70 360,110 Q540,90 720,130 Q900,70 1080,110 Q1260,90 1440,130 Q1440,110 1440,90 Q1080,110 720,110 Q360,110 0,90 Q0,110 0,130 Z" fill="#14b8a6" opacity="0.5"/>
+      {/* Bottom smooth wave - giống Up For Paws với độ cong lớn hơn */}
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '160px' }}>
+        <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,160 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,160 L0,160 Z" fill="#14b8a6" opacity="0.6"/>
         </svg>
       </div>
       

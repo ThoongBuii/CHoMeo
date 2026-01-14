@@ -226,18 +226,18 @@ export default function HeroCarousel() {
         ))}
       </div>
 
-      {/* Bottom smooth wave bands - bay bổng như Up For Paws */}
-      {/* Dark teal/green wave - layer trên cùng - bay bổng với độ cong lớn */}
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '200px' }}>
-        <svg viewBox="0 0 1440 200" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,200 Q180,100 360,140 Q540,180 720,120 Q900,60 1080,100 Q1260,140 1440,80 Q1440,140 1440,180 Q1080,200 720,200 Q360,200 0,180 Q0,190 0,200 Z" fill="#0d9488"/>
+      {/* Bottom smooth wave bands - giống Up For Paws với nhiều lớp và độ cong lớn hơn */}
+      {/* Dark teal/green wave - layer trên cùng - độ cong lớn và mượt mà hơn */}
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '180px' }}>
+        <svg viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,180 C120,40 240,60 360,100 C480,140 600,120 720,140 C840,160 960,100 1080,120 C1200,140 1320,80 1440,100 L1440,180 L0,180 Z" fill="#0d9488"/>
         </svg>
       </div>
       
-      {/* Brown/orange wave - layer dưới - bay bổng với độ cong lớn */}
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '160px' }}>
-        <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,160 Q180,60 360,100 Q540,140 720,80 Q900,20 1080,60 Q1260,100 1440,40 Q1440,100 1440,140 Q1080,160 720,160 Q360,160 0,140 Q0,150 0,160 Z" fill="#d97706"/>
+      {/* Brown/orange wave - layer dưới - độ cong lớn và mượt mà hơn, tạo độ sâu */}
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,150 C100,30 200,50 320,80 C440,110 560,90 680,110 C800,130 920,70 1040,90 C1160,110 1280,50 1440,70 L1440,150 L0,150 Z" fill="#d97706"/>
         </svg>
       </div>
     </section>

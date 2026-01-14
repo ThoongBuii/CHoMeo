@@ -34,22 +34,22 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-gradient-to-r from-teal-100/50 via-teal-150/30 to-teal-200/50"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-teal-50/70 via-transparent to-teal-100/50"></div>
       
-      {/* Smooth wave transition from Curriculum section - bay bổng */}
+      {/* Smooth wave transition from Curriculum section - giống Up For Paws */}
       <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,0 Q180,50 360,30 Q540,10 720,40 Q900,20 1080,50 Q1260,30 1440,60 Q1440,30 1440,0 Q1080,0 720,0 Q360,0 0,0 Z" fill="#ccfbf1"/>
+        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
+          <path d="M0,0 C120,120 240,100 360,120 C480,140 600,120 720,140 C840,160 960,100 1080,120 C1200,140 1320,80 1440,100 L1440,0 L0,0 Z" fill="#ccfbf1"/>
         </svg>
       </div>
       
-      {/* Bottom smooth waves - bay bổng với độ cong lớn */}
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
-        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,150 Q180,80 360,120 Q540,100 720,140 Q900,80 1080,120 Q1260,100 1440,140 Q1440,130 1440,120 Q1080,140 720,140 Q360,140 0,120 Q0,135 0,150 Z" fill="#d97706" opacity="0.6"/>
+      {/* Bottom smooth waves - giống Up For Paws với nhiều lớp và độ cong lớn hơn */}
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '170px' }}>
+        <svg viewBox="0 0 1440 170" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,170 C120,60 240,80 360,110 C480,140 600,120 720,140 C840,160 960,100 1080,120 C1200,140 1320,80 1440,100 L1440,170 L0,170 Z" fill="#d97706" opacity="0.7"/>
         </svg>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '120px' }}>
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,120 Q180,60 360,100 Q540,80 720,120 Q900,60 1080,100 Q1260,80 1440,120 Q1440,110 1440,100 Q1080,110 720,110 Q360,110 0,100 Q0,110 0,120 Z" fill="#f59e0b" opacity="0.5"/>
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '140px' }}>
+        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,140 C100,50 200,70 320,100 C440,130 560,110 680,130 C800,150 920,90 1040,110 C1160,130 1280,70 1440,90 L1440,140 L0,140 Z" fill="#f59e0b" opacity="0.6"/>
         </svg>
       </div>
       

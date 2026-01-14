@@ -6,22 +6,22 @@ export default function AboutPreview() {
       {/* Background base - nhẹ nhàng */}
       <div className="absolute inset-0 bg-gradient-to-br from-teal-50/80 via-teal-100/60 to-teal-150/80"></div>
       
-      {/* Smooth wave transition from hero - bay bổng như Up For Paws */}
+      {/* Smooth wave transition from hero - giống Up For Paws với độ cong lớn hơn */}
       <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,120 Q180,60 360,100 Q540,80 720,120 Q900,60 1080,100 Q1260,80 1440,120 Q1440,100 1440,80 Q1080,60 720,60 Q360,60 0,80 Q0,100 0,120 Z" fill="#f0fdfa"/>
+        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
+          <path d="M0,140 C120,20 240,40 360,80 C480,120 600,100 720,120 C840,140 960,80 1080,100 C1200,120 1320,60 1440,80 L1440,0 L0,0 Z" fill="#f0fdfa"/>
         </svg>
       </div>
       
-      {/* Bottom smooth wave bands - bay bổng với độ cong lớn */}
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '140px' }}>
-        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,140 Q180,70 360,110 Q540,90 720,130 Q900,70 1080,110 Q1260,90 1440,130 Q1440,120 1440,110 Q1080,130 720,130 Q360,130 0,110 Q0,125 0,140 Z" fill="#16a34a" opacity="0.5"/>
+      {/* Bottom smooth wave bands - giống Up For Paws với nhiều lớp */}
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '160px' }}>
+        <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,160 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,160 L0,160 Z" fill="#16a34a" opacity="0.6"/>
         </svg>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '110px' }}>
-        <svg viewBox="0 0 1440 110" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,110 Q180,50 360,90 Q540,70 720,110 Q900,50 1080,90 Q1260,70 1440,110 Q1440,100 1440,90 Q1080,100 720,100 Q360,100 0,90 Q0,100 0,110 Z" fill="#0d9488" opacity="0.4"/>
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '130px' }}>
+        <svg viewBox="0 0 1440 130" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,130 C100,40 200,60 320,90 C440,120 560,100 680,120 C800,140 920,80 1040,100 C1160,120 1280,60 1440,80 L1440,130 L0,130 Z" fill="#0d9488" opacity="0.5"/>
         </svg>
       </div>
       
