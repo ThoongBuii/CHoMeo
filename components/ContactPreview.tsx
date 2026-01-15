@@ -1,162 +1,106 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
-import { FiPhone, FiMail, FiFacebook, FiInstagram, FiTwitter } from 'react-icons/fi'
+import { FiInstagram } from 'react-icons/fi'
 
 export default function ContactPreview() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: '', email: '', message: '' })
-    }, 3000)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
+  // Placeholder images - có thể thay bằng ảnh thật sau
+  const galleryItems = [
+    { id: 1, type: 'image', icon: '🐕', title: 'Hoạt Động Ngoài Trời' },
+    { id: 2, type: 'video', icon: '🎥', title: 'Video Hoạt Động' },
+    { id: 3, type: 'image', icon: '🏃', title: 'Chạy Bộ Cùng Thú Cưng' },
+    { id: 4, type: 'image', icon: '🎾', title: 'Vui Chơi' },
+    { id: 5, type: 'image', icon: '🌳', title: 'Khám Phá Công Viên' },
+    { id: 6, type: 'image', icon: '👥', title: 'Xã Hội Hóa' },
+    { id: 7, type: 'image', icon: '🎯', title: 'Huấn Luyện' },
+    { id: 8, type: 'image', icon: '💚', title: 'Khoảnh Khắc Đáng Yêu' },
+  ]
 
   return (
-    <section className="section-padding bg-gradient-to-br from-teal-50 via-teal-100 to-teal-150 relative overflow-hidden">
-      {/* Multiple gradient layers */}
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-100/40 via-teal-150/30 to-teal-200/40"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-teal-50/60 via-transparent to-teal-100/50"></div>
+    <section className="section-padding bg-gradient-to-br from-teal-50 via-teal-100 to-teal-150 relative overflow-hidden" style={{ perspective: '1000px' }}>
       
-      {/* Smooth wave transition from SignUp section - giống Up For Paws */}
-      <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,0 C120,140 240,120 360,140 C480,160 600,140 720,160 C840,180 960,120 1080,140 C1200,160 1320,100 1440,120 L1440,0 L0,0 Z" fill="#ccfbf1"/>
+      {/* Top transition wave - blend tự nhiên với section trên (teal) */}
+      <div className="absolute top-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,90 C120,100 240,80 360,110 C480,140 600,120 720,130 C840,140 960,100 1080,110 C1200,120 1320,80 1440,90 L1440,0 L0,0 Z" fill="#ccfbf1"/>
         </svg>
       </div>
       
-      {/* Organic decorative blobs */}
-      <div className="absolute top-10 right-10 w-20 h-20 md:w-36 md:h-36 organic-blob bg-teal-200/20 opacity-50"></div>
-      <div className="absolute bottom-10 left-10 w-16 h-16 md:w-28 md:h-28 organic-blob bg-teal-300/20 opacity-50" style={{ animationDelay: '1.8s' }}></div>
+      {/* Bottom smooth wave - cùng màu xanh với Footer top wave */}
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#ccfbf1"/>
+        </svg>
+      </div>
 
       <div className="container-custom relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Liên Hệ Chúng Tôi</h2>
-          <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-            Bạn có câu hỏi về Chò Méo? Chúng tôi chắc chắn có câu trả lời.
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gradient-genz">
+            Chò Méo? Chò Vui!
+          </h2>
+          <p className="text-lg md:text-xl text-teal-800 max-w-2xl mx-auto mb-8">
+            Khám phá những khoảnh khắc đáng yêu và hoạt động thú vị của thú cưng tại Chò Méo
           </p>
+          
+          {/* Instagram Link */}
+          <div className="flex items-center justify-center space-x-3 mb-12">
+            <div className="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 p-3 rounded-full">
+              <FiInstagram className="w-6 h-6 text-white" />
+            </div>
+            <Link 
+              href="https://instagram.com/chomeo" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-teal-700 hover:text-teal-900 font-semibold text-lg transition-colors"
+            >
+              @chomeo
+            </Link>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-2xl font-bold mb-6 text-teal-900">Thông Tin Liên Hệ</h3>
-            <p className="text-teal-800 mb-6">
-              Click bất kỳ link nào bên dưới để liên hệ với chúng tôi!
-            </p>
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto" style={{ transformStyle: 'preserve-3d' }}>
+          {galleryItems.map((item, index) => {
+            const distortions = [
+              { rotateX: 1, rotateY: -1, skewX: -0.5, skewY: 0.5 },
+              { rotateX: -1, rotateY: 1, skewX: 0.5, skewY: -0.5 },
+              { rotateX: 0.5, rotateY: -0.5, skewX: -0.3, skewY: 0.3 },
+              { rotateX: -0.5, rotateY: 0.5, skewX: 0.3, skewY: -0.3 },
+              { rotateX: 1, rotateY: 1, skewX: -0.5, skewY: -0.5 },
+              { rotateX: -1, rotateY: -1, skewX: 0.5, skewY: 0.5 },
+              { rotateX: 0.3, rotateY: -0.3, skewX: -0.2, skewY: 0.2 },
+              { rotateX: -0.3, rotateY: 0.3, skewX: 0.2, skewY: -0.2 },
+            ]
+            const dist = distortions[index % distortions.length]
             
-            <div className="space-y-6 mb-8">
-              <div className="flex items-center space-x-4">
-                <div className="bg-teal-100 p-3 rounded-lg">
-                  <FiPhone className="w-6 h-6 text-teal-600" />
+            return (
+              <div
+                key={item.id}
+                className="card-genz bg-gradient-to-br from-teal-200 to-teal-300 aspect-square rounded-2xl overflow-hidden group cursor-pointer relative"
+                style={{ 
+                  transform: `perspective(600px) rotateX(${dist.rotateX}deg) rotateY(${dist.rotateY}deg) skewX(${dist.skewX}deg) skewY(${dist.skewY}deg)`,
+                  transformStyle: 'preserve-3d'
+                }}
+              >
+                {/* Placeholder content */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-teal-200/80 to-teal-300/80 group-hover:from-teal-300/90 group-hover:to-teal-400/90 transition-all duration-300">
+                  <div className="text-6xl md:text-7xl mb-2 group-hover:scale-110 transition-transform duration-300">
+                    {item.icon}
+                  </div>
+                  {item.type === 'video' && (
+                    <div className="absolute top-2 right-2 bg-black/50 text-white px-2 py-1 rounded text-xs font-semibold">
+                      ▶
+                    </div>
+                  )}
                 </div>
-                <div>
-                  <p className="font-semibold text-teal-900">Điện Thoại</p>
-                  <p className="text-teal-800">+84 123 456 789</p>
+                
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                  <p className="text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center px-2">
+                    {item.title}
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <div className="bg-teal-200 p-3 rounded-lg">
-                  <FiMail className="w-6 h-6 text-teal-700" />
-                </div>
-                <div>
-                  <p className="font-semibold text-teal-900">Email</p>
-                  <p className="text-teal-800">hello@chomeo.com</p>
-                </div>
-              </div>
-            </div>
-
-            <p className="text-teal-800 mb-6">
-              (Thời gian phản hồi trong vòng 24 giờ)
-            </p>
-
-            <div className="flex items-center space-x-4">
-              <a href="#" className="bg-teal-600 text-white p-3 rounded-full hover:bg-teal-700 transition-colors" aria-label="Facebook">
-                <FiFacebook className="w-6 h-6" />
-              </a>
-              <a href="#" className="bg-teal-600 text-white p-3 rounded-full hover:bg-teal-700 transition-colors" aria-label="Instagram">
-                <FiInstagram className="w-6 h-6" />
-              </a>
-              <a href="#" className="bg-teal-600 text-white p-3 rounded-full hover:bg-teal-700 transition-colors" aria-label="Twitter">
-                <FiTwitter className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div>
-            <h3 className="text-2xl font-bold mb-6 text-teal-900">Gửi Tin Nhắn</h3>
-            {submitted ? (
-              <div className="bg-green-200 border-2 border-green-400 rounded-lg p-6 text-green-900">
-                <p className="font-semibold mb-2">Cảm ơn bạn đã liên hệ!</p>
-                <p>Chúng tôi sẽ phản hồi sớm nhất có thể.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-teal-900 mb-2">
-                    Tên *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white border-2 border-teal-300 rounded-lg focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-200"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-teal-900 mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white border-2 border-teal-300 rounded-lg focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-200"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-teal-900 mb-2">
-                    Tin Nhắn *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 bg-white border-2 border-teal-300 rounded-lg focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-200 resize-none"
-                  />
-                </div>
-                <button type="submit" className="bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-teal-700 transition-all duration-200 transform hover:scale-105 active:scale-95 w-full">
-                  Gửi Tin Nhắn
-                </button>
-              </form>
-            )}
-          </div>
+            )
+          })}
         </div>
       </div>
     </section>

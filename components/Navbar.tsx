@@ -1,12 +1,24 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { FiMenu, FiX, FiChevronDown, FiShoppingCart } from 'react-icons/fi'
+import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [resourcesOpen, setResourcesOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  // Detect scroll để thay đổi navbar style
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setIsScrolled(scrollPosition > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Navigation items bên trái logo
   const leftNavItems = [
@@ -14,7 +26,6 @@ export default function Navbar() {
     { name: 'Chương Trình', href: '/curriculum' },
     { name: 'Dịch Vụ', href: '/services' },
     { name: 'Bảng Giá', href: '/rates' },
-    { name: 'Cửa Hàng', href: '/shop' },
   ]
 
   const resourcesItems = [
@@ -24,18 +35,27 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-gradient-to-r from-green-400 via-green-500 to-green-400 shadow-md sticky top-0 z-50 relative overflow-hidden">
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-green-450/30 via-transparent to-green-500/20"></div>
-      <div className="container-custom relative z-10">
+    <nav 
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white shadow-lg' 
+          : 'bg-gradient-to-br from-green-50 via-amber-50 to-green-50'
+      }`}
+      style={!isScrolled ? { backgroundColor: '#fef9e7' } : {}}
+    >
+      <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Left Navigation Items */}
-          <div className="hidden lg:flex items-center space-x-6 flex-1">
+          <div className="hidden lg:flex items-center space-x-8 flex-1">
             {leftNavItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-green-900 hover:text-green-700 transition-colors font-semibold text-sm"
+                className={`transition-colors font-medium text-sm ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-green-600' 
+                    : 'text-gray-800 hover:text-green-600'
+                }`}
               >
                 {item.name}
               </Link>
@@ -43,9 +63,17 @@ export default function Navbar() {
           </div>
 
           {/* Logo ở giữa */}
-          <Link href="/" className="flex flex-col items-center justify-center flex-shrink-0 mx-8">
-            <span className="text-2xl md:text-3xl font-bold text-green-900">Chò Méo</span>
-            <span className="text-xs md:text-sm text-green-800 font-medium">Trường Học Thú Cưng</span>
+          <Link href="/" className="flex flex-col items-center justify-center flex-shrink-0 mx-8 group">
+            <span className={`text-2xl md:text-3xl font-bold transition-colors ${
+              isScrolled ? 'text-green-600' : 'text-gray-900'
+            }`}>
+              Chò Méo
+            </span>
+            <span className={`text-xs md:text-sm font-medium transition-colors ${
+              isScrolled ? 'text-gray-600' : 'text-gray-700'
+            }`}>
+              Trường Học Thú Cưng
+            </span>
           </Link>
 
           {/* Right Navigation Items */}
@@ -56,17 +84,21 @@ export default function Navbar() {
               onMouseEnter={() => setResourcesOpen(true)}
               onMouseLeave={() => setResourcesOpen(false)}
             >
-              <button className="text-green-900 hover:text-green-700 transition-colors font-semibold flex items-center space-x-1 text-sm">
+              <button className={`transition-colors font-medium flex items-center space-x-1 text-sm ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-green-600' 
+                  : 'text-gray-800 hover:text-green-600'
+              }`}>
                 <span>Tài Nguyên</span>
                 <FiChevronDown className={`w-4 h-4 transition-transform ${resourcesOpen ? 'rotate-180' : ''}`} />
               </button>
               {resourcesOpen && (
-                <div className="absolute top-full right-0 mt-2 w-48 bg-green-100 rounded-lg shadow-lg border-2 border-green-300 py-2 z-50">
+                <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
                   {resourcesItems.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block px-4 py-2 text-green-900 hover:bg-green-200 hover:text-green-700 transition-colors"
+                      className="block px-4 py-2 text-gray-800 hover:bg-green-50 hover:text-green-600 transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -77,36 +109,30 @@ export default function Navbar() {
 
             <Link
               href="/contact"
-              className="text-green-900 hover:text-green-700 transition-colors font-semibold text-sm"
+              className={`transition-colors font-medium text-sm ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-green-600' 
+                  : 'text-gray-800 hover:text-green-600'
+              }`}
             >
               Liên Hệ
             </Link>
 
-            {/* Sign Up Button - màu xanh nước biển (teal) */}
+            {/* Sign Up Button - màu teal */}
             <Link
               href="/signup"
-              className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-sm"
+              className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-sm shadow-md hover:shadow-lg"
             >
               <span>Đăng Ký</span>
-              <span className="text-sm">🐾</span>
-            </Link>
-
-            {/* Shopping Cart */}
-            <Link
-              href="/shop"
-              className="relative p-2 text-green-900 hover:text-green-700 transition-colors"
-              aria-label="Shopping cart"
-            >
-              <FiShoppingCart className="w-6 h-6" />
-              <span className="absolute -top-1 -right-1 bg-teal-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">
-                0
-              </span>
+              <span className="text-base">🐾</span>
             </Link>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-2 text-green-900"
+            className={`lg:hidden p-2 transition-colors ${
+              isScrolled ? 'text-gray-800' : 'text-gray-800'
+            }`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -120,12 +146,18 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden py-4 space-y-4 border-t border-green-300 mt-2">
+          <div className={`lg:hidden py-4 space-y-4 border-t mt-2 ${
+            isScrolled ? 'border-gray-200 bg-white' : 'border-gray-200 bg-white/95 backdrop-blur-sm'
+          }`}>
             {leftNavItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block text-green-900 hover:text-green-700 transition-colors font-semibold"
+                className={`block transition-colors font-medium ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-green-600' 
+                    : 'text-gray-800 hover:text-green-600'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -134,7 +166,11 @@ export default function Navbar() {
             <div>
               <button
                 onClick={() => setResourcesOpen(!resourcesOpen)}
-                className="flex items-center justify-between w-full text-green-900 hover:text-green-700 transition-colors font-semibold"
+                className={`flex items-center justify-between w-full transition-colors font-medium ${
+                  isScrolled 
+                    ? 'text-gray-800 hover:text-green-600' 
+                    : 'text-gray-800 hover:text-green-600'
+                }`}
               >
                 <span>Tài Nguyên</span>
                 <FiChevronDown className={`w-4 h-4 transition-transform ${resourcesOpen ? 'rotate-180' : ''}`} />
@@ -145,7 +181,7 @@ export default function Navbar() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="block text-green-800 hover:text-green-700 transition-colors"
+                      className="block text-gray-700 hover:text-green-600 transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
@@ -156,25 +192,21 @@ export default function Navbar() {
             </div>
             <Link
               href="/contact"
-              className="block text-green-900 hover:text-green-700 transition-colors font-semibold"
+              className={`block transition-colors font-medium ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-green-600' 
+                  : 'text-gray-800 hover:text-green-600'
+              }`}
               onClick={() => setIsOpen(false)}
             >
               Liên Hệ
             </Link>
             <Link
               href="/signup"
-              className="block bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-semibold text-center transition-all duration-200"
+              className="block bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg font-semibold text-center transition-all duration-200"
               onClick={() => setIsOpen(false)}
             >
               Đăng Ký
-            </Link>
-            <Link
-              href="/shop"
-              className="flex items-center space-x-2 text-green-900 hover:text-green-700 transition-colors font-semibold"
-              onClick={() => setIsOpen(false)}
-            >
-              <FiShoppingCart className="w-5 h-5" />
-              <span>Cửa Hàng (0 items)</span>
             </Link>
           </div>
         )}

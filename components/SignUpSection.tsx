@@ -2,80 +2,58 @@ import Link from 'next/link'
 
 export default function SignUpSection() {
   return (
-    <section className="section-padding bg-gradient-to-br from-brown-500 via-brown-600 to-brown-700 text-white relative overflow-hidden">
-      {/* Multiple gradient layers for depth */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brown-600/80 via-brown-550/60 to-brown-700/80"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-brown-500/70 via-brown-600/50 to-brown-800/70"></div>
+    <section className="section-padding bg-gradient-to-br from-orange-200 via-orange-300 to-orange-400 text-gray-900 relative overflow-hidden" style={{ perspective: '1000px' }}>
       
-      {/* Decorative curved elements - sống động */}
-      <div className="absolute top-0 left-0 w-80 h-80 opacity-15">
-        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,150 Q75,75 150,100 T300,150 L300,0 L0,0 Z" fill="url(#brownGradient1)" />
-          <defs>
-            <linearGradient id="brownGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#d97706" stopOpacity="0.2" />
-            </linearGradient>
-          </defs>
+      {/* Top transition wave - blend tự nhiên với section trên (teal) */}
+      <div className="absolute top-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,90 C120,100 240,80 360,110 C480,140 600,120 720,130 C840,140 960,100 1080,110 C1200,120 1320,80 1440,90 L1440,0 L0,0 Z" fill="#ffedd5"/>
         </svg>
       </div>
       
-      <div className="absolute top-0 right-0 w-96 h-96 opacity-10">
-        <div className="organic-blob w-full h-full bg-gradient-to-br from-brown-400 to-brown-500"></div>
-      </div>
-      
-      {/* Smooth wave transition from Testimonials - giống Up For Paws */}
-      <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,0 C120,140 240,120 360,140 C480,160 600,140 720,160 C840,180 960,120 1080,140 C1200,160 1320,100 1440,120 L1440,0 L0,0 Z" fill="#92400e"/>
-        </svg>
-      </div>
-      
-      {/* Bottom smooth wave bands - giống Up For Paws với nhiều lớp và độ cong lớn hơn */}
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '180px' }}>
-        <svg viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,180 C120,70 240,90 360,120 C480,150 600,130 720,150 C840,170 960,110 1080,130 C1200,150 1320,90 1440,110 L1440,180 L0,180 Z" fill="#14b8a6" opacity="0.8"/>
-        </svg>
-      </div>
+      {/* Bottom smooth wave - blend tự nhiên với section tiếp theo (teal) */}
       <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
         <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,150 C100,60 200,80 320,110 C440,140 560,120 680,140 C800,160 920,100 1040,120 C1160,140 1280,80 1440,100 L1440,150 L0,150 Z" fill="#0d9488" opacity="0.7"/>
+          <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#ccfbf1"/>
         </svg>
       </div>
-      
-      {/* Organic decorative blobs */}
-      <div className="absolute top-10 left-10 w-32 h-32 md:w-48 md:h-48 organic-blob bg-white/5 opacity-50 float-animation"></div>
-      <div className="absolute bottom-10 right-10 w-28 h-28 md:w-40 md:h-40 organic-blob bg-white/5 opacity-50 float-animation" style={{ animationDelay: '3s' }}></div>
-      <div className="absolute top-1/3 right-1/4 w-24 h-24 organic-blob bg-green-300/10 float-animation" style={{ animationDelay: '1.5s' }}></div>
 
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <div className="inline-block mb-4">
+            <span className="text-5xl animate-bounce-genz">🎉</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gradient-genz">
             Nghe Có Vẻ Tuyệt Vời? Hãy Đến Thăm Chúng Tôi!
           </h2>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-brown-400/30 backdrop-blur-sm rounded-xl p-6 border-2 border-brown-300/50">
-              <div className="text-4xl font-bold mb-2 text-brown-50">01</div>
-              <p className="text-brown-100">Điền vào form của chúng tôi để Đăng ký</p>
-            </div>
-            <div className="bg-brown-400/30 backdrop-blur-sm rounded-xl p-6 border-2 border-brown-300/50">
-              <div className="text-4xl font-bold mb-2 text-brown-50">02</div>
-              <p className="text-brown-100">Đưa thú cưng của bạn đến để đánh giá MIỄN PHÍ</p>
-            </div>
-            <div className="bg-brown-400/30 backdrop-blur-sm rounded-xl p-6 border-2 border-brown-300/50">
-              <div className="text-4xl font-bold mb-2 text-brown-50">03</div>
-              <p className="text-brown-100">Đăng ký Daycare!</p>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8 mb-12" style={{ transformStyle: 'preserve-3d' }}>
+            {[
+              { num: '01', text: 'Điền vào form của chúng tôi để Đăng ký', dist: { rotateX: -1, rotateY: 1.5, skewX: 1, skewY: -0.5 } },
+              { num: '02', text: 'Đưa thú cưng của bạn đến để đánh giá MIỄN PHÍ', dist: { rotateX: 1, rotateY: -1, skewX: -1, skewY: 0.5 } },
+              { num: '03', text: 'Đăng ký Daycare!', dist: { rotateX: -0.5, rotateY: 1, skewX: 0.5, skewY: -1 } },
+            ].map((step, index) => (
+              <div 
+                key={index}
+                className="bg-white/40 backdrop-blur-sm rounded-2xl p-6 border-2 border-white/50"
+                style={{ 
+                  transform: `perspective(600px) rotateX(${step.dist.rotateX}deg) rotateY(${step.dist.rotateY}deg) skewX(${step.dist.skewX}deg) skewY(${step.dist.skewY}deg)`,
+                  transformStyle: 'preserve-3d'
+                }}
+              >
+                <div className="text-4xl font-bold mb-2 text-gray-900">{step.num}</div>
+                <p className="text-gray-800">{step.text}</p>
+              </div>
+            ))}
           </div>
 
-          <p className="text-sm mb-8 text-brown-200">
+          <p className="text-sm mb-8 text-gray-700">
             *Thú cưng lần đầu cần trải qua đánh giá MIỄN PHÍ để sẵn sàng cho daycare
           </p>
 
           <Link
             href="/signup"
-            className="inline-flex items-center space-x-2 bg-white text-brown-600 hover:bg-brown-50 px-8 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 active:scale-95 text-lg shadow-lg"
+            className="inline-flex items-center space-x-2 bg-teal-500 text-white hover:bg-teal-600 px-8 py-4 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 active:scale-95 text-lg shadow-xl hover:shadow-2xl"
           >
             <span>Đặt Lịch Thăm Quan</span>
             <span className="text-xl">🐾</span>

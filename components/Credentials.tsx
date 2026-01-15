@@ -54,44 +54,57 @@ export default function Credentials() {
   }
 
   return (
-    <section className="section-padding bg-gradient-to-br from-green-50 via-green-100 to-green-150 relative overflow-hidden">
-      {/* Smooth wave transition from About section - giống Up For Paws */}
-      <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,0 C120,120 240,100 360,120 C480,140 600,120 720,140 C840,160 960,100 1080,120 C1200,140 1320,80 1440,100 L1440,0 L0,0 Z" fill="#dcfce7"/>
+    <section className="section-padding bg-gradient-to-br from-green-50 via-green-100 to-green-150 relative overflow-hidden" style={{ perspective: '1200px' }}>
+      
+      {/* Top transition wave - blend tự nhiên với section trên (teal) */}
+      <div className="absolute top-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,90 C120,100 240,80 360,110 C480,140 600,120 720,130 C840,140 960,100 1080,110 C1200,120 1320,80 1440,90 L1440,0 L0,0 Z" fill="#dcfce7"/>
         </svg>
       </div>
       
-      {/* Multiple gradient overlays for depth */}
-      <div className="absolute inset-0 bg-gradient-to-r from-green-100/50 via-transparent to-green-150/50"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-100/30 to-green-200/40"></div>
-      
-      {/* Bottom smooth wave - giống Up For Paws với độ cong lớn hơn */}
+      {/* Bottom smooth wave - blend tự nhiên với section tiếp theo (green) */}
       <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
         <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,150 C120,40 240,60 360,90 C480,120 600,100 720,120 C840,140 960,80 1080,100 C1200,120 1320,60 1440,80 L1440,150 L0,150 Z" fill="#14b8a6" opacity="0.6"/>
+          <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#dcfce7"/>
         </svg>
       </div>
       
       <div className="container-custom relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-900">Cam Kết & Chứng Chỉ</h2>
-          <p className="text-lg text-green-800 max-w-2xl mx-auto">
+        <div className="text-center mb-16">
+          <div className="inline-block mb-4">
+            <span className="text-4xl animate-bounce-genz">✨</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gradient-genz">Cam Kết & Chứng Chỉ</h2>
+          <p className="text-lg md:text-xl text-green-800 max-w-2xl mx-auto leading-relaxed">
             Những điều chúng tôi cam kết mang lại cho thú cưng của bạn
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {credentials.map((credential, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ transformStyle: 'preserve-3d' }}>
+          {credentials.map((credential, index) => {
+            // Tạo sự méo không gian khác nhau cho mỗi card
+            const distortions = [
+              { rotateX: -1, rotateY: 2, skewX: 1, skewY: -0.5 },
+              { rotateX: 1, rotateY: -1, skewX: -1, skewY: 0.5 },
+              { rotateX: 0.5, rotateY: 1.5, skewX: 0.5, skewY: -1 },
+              { rotateX: -0.5, rotateY: -2, skewX: -0.5, skewY: 1 },
+              { rotateX: 1.5, rotateY: 0.5, skewX: 1, skewY: 0.5 },
+              { rotateX: -1.5, rotateY: -0.5, skewX: -1, skewY: -0.5 },
+            ]
+            const dist = distortions[index % distortions.length]
+            
+            return (
             <div
               key={index}
-              className={`rounded-2xl p-6 border-2 hover:shadow-2xl transition-all duration-300 tilt-on-hover relative overflow-hidden organic-card stagger-${(index % 4) + 1} ${
+              className={`card-genz p-8 border-2 relative overflow-hidden group scale-on-hover ${
                 credential.color === 'green' ? 'bg-green-100 border-green-300' :
                 credential.color === 'teal' ? 'bg-teal-100 border-teal-300' :
                 'bg-brown-100 border-brown-300'
               }`}
               style={{ 
-                transform: index % 2 === 0 ? 'rotate(-0.5deg)' : 'rotate(0.5deg)',
+                transform: `perspective(800px) rotateX(${dist.rotateX}deg) rotateY(${dist.rotateY}deg) skewX(${dist.skewX}deg) skewY(${dist.skewY}deg)`,
+                transformStyle: 'preserve-3d',
                 animationDelay: `${index * 0.1}s`
               }}
             >
@@ -107,13 +120,13 @@ export default function Credentials() {
                 'bg-brown-300'
               }`} style={{ animationDelay: `${index * 0.3}s` }}></div>
               
-              <div className={`inline-flex p-4 rounded-xl mb-4 transform hover:rotate-12 transition-transform duration-300 ${getColorClasses(credential.color)}`}>
+              <div className={`inline-flex p-4 rounded-2xl mb-4 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 ${getColorClasses(credential.color)}`}>
                 {credential.icon}
               </div>
-              <h3 className={`text-xl font-bold mb-2 ${
-                credential.color === 'green' ? 'text-green-900' :
-                credential.color === 'teal' ? 'text-teal-900' :
-                'text-brown-900'
+              <h3 className={`text-xl font-bold mb-3 text-gradient-genz ${
+                credential.color === 'green' ? '' :
+                credential.color === 'teal' ? '' :
+                ''
               }`}>{credential.title}</h3>
               <p className={`leading-relaxed ${
                 credential.color === 'green' ? 'text-green-800' :
@@ -121,7 +134,8 @@ export default function Credentials() {
                 'text-brown-800'
               }`}>{credential.description}</p>
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

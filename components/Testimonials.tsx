@@ -29,27 +29,19 @@ export default function Testimonials() {
   ]
 
   return (
-    <section id="reviews" className="section-padding bg-gradient-to-br from-teal-50 via-teal-100 to-teal-150 relative overflow-hidden">
-      {/* Multiple gradient layers for depth */}
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-100/50 via-teal-150/30 to-teal-200/50"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-teal-50/70 via-transparent to-teal-100/50"></div>
+    <section id="reviews" className="section-padding bg-gradient-to-br from-teal-50 via-teal-100 to-teal-150 relative overflow-hidden" style={{ perspective: '1100px' }}>
       
-      {/* Smooth wave transition from Curriculum section - giống Up For Paws */}
-      <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,0 C120,120 240,100 360,120 C480,140 600,120 720,140 C840,160 960,100 1080,120 C1200,140 1320,80 1440,100 L1440,0 L0,0 Z" fill="#ccfbf1"/>
+      {/* Top transition wave - blend tự nhiên với section trên (green) */}
+      <div className="absolute top-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,90 C120,100 240,80 360,110 C480,140 600,120 720,130 C840,140 960,100 1080,110 C1200,120 1320,80 1440,90 L1440,0 L0,0 Z" fill="#ccfbf1"/>
         </svg>
       </div>
       
-      {/* Bottom smooth waves - giống Up For Paws với nhiều lớp và độ cong lớn hơn */}
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '170px' }}>
-        <svg viewBox="0 0 1440 170" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,170 C120,60 240,80 360,110 C480,140 600,120 720,140 C840,160 960,100 1080,120 C1200,140 1320,80 1440,100 L1440,170 L0,170 Z" fill="#d97706" opacity="0.7"/>
-        </svg>
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '140px' }}>
-        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,140 C100,50 200,70 320,100 C440,130 560,110 680,130 C800,150 920,90 1040,110 C1160,130 1280,70 1440,90 L1440,140 L0,140 Z" fill="#f59e0b" opacity="0.6"/>
+      {/* Bottom smooth wave - blend tự nhiên với section tiếp theo (brown) */}
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#ffedd5"/>
         </svg>
       </div>
       
@@ -57,19 +49,33 @@ export default function Testimonials() {
       <div className="absolute top-20 left-20 w-24 h-24 md:w-40 md:h-40 organic-blob bg-teal-200/15 opacity-40"></div>
       <div className="absolute bottom-20 right-20 w-20 h-20 md:w-36 md:h-36 organic-blob bg-teal-300/15 opacity-40" style={{ animationDelay: '2.5s' }}></div>
       <div className="container-custom relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">
+        <div className="text-center mb-16">
+          <div className="inline-block mb-4">
+            <span className="text-4xl animate-bounce-genz">💬</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gradient-genz">
             Khách Hàng Nói Gì Về Chúng Tôi
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
+        <div className="grid md:grid-cols-2 gap-8" style={{ transformStyle: 'preserve-3d' }}>
+          {testimonials.map((testimonial, index) => {
+            // Tạo sự méo không gian khác nhau cho mỗi testimonial card
+            const testimonialDistortions = [
+              { rotateX: -1.5, rotateY: 2, skewX: 1.5, skewY: -1 },
+              { rotateX: 1.5, rotateY: -1.5, skewX: -1, skewY: 1.5 },
+              { rotateX: 0.5, rotateY: 1, skewX: 0.5, skewY: -0.5 },
+              { rotateX: -1, rotateY: -1, skewX: -1.5, skewY: 1 },
+            ]
+            const dist = testimonialDistortions[index % testimonialDistortions.length]
+            
+            return (
             <div
               key={index}
-              className="bg-teal-100 rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 relative overflow-hidden border-2 border-teal-300 organic-card group"
+              className="card-genz bg-teal-100 p-8 border-2 border-teal-300 group"
               style={{ 
-                transform: `rotate(${index % 2 === 0 ? '0.5deg' : '-0.5deg'})`,
+                transform: `perspective(700px) rotateX(${dist.rotateX}deg) rotateY(${dist.rotateY}deg) skewX(${dist.skewX}deg) skewY(${dist.skewY}deg)`,
+                transformStyle: 'preserve-3d',
                 animationDelay: `${index * 0.2}s`
               }}
             >
@@ -96,7 +102,8 @@ export default function Testimonials() {
               {/* Hover gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-teal-200/0 to-teal-300/0 group-hover:from-teal-200/50 group-hover:to-teal-300/30 transition-all duration-300 rounded-2xl"></div>
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

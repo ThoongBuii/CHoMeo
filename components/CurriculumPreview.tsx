@@ -26,22 +26,19 @@ export default function CurriculumPreview() {
   ]
 
   return (
-    <section className="section-padding bg-gradient-to-br from-green-50 via-green-100 to-green-150 relative overflow-hidden">
-      {/* Multiple gradient layers */}
-      <div className="absolute inset-0 bg-gradient-to-r from-green-100/60 via-green-150/40 to-green-200/60"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-green-50/80 via-transparent to-green-100/60"></div>
+    <section className="section-padding bg-gradient-to-br from-green-50 via-green-100 to-green-150 relative overflow-hidden" style={{ perspective: '1000px' }}>
       
-      {/* Smooth wave transition from Credentials section - giống Up For Paws */}
-      <div className="absolute top-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 140" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full">
-          <path d="M0,0 C120,120 240,100 360,120 C480,140 600,120 720,140 C840,160 960,100 1080,120 C1200,140 1320,80 1440,100 L1440,0 L0,0 Z" fill="#dcfce7"/>
+      {/* Top transition wave - blend tự nhiên với section trên (green) */}
+      <div className="absolute top-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,90 C120,100 240,80 360,110 C480,140 600,120 720,130 C840,140 960,100 1080,110 C1200,120 1320,80 1440,90 L1440,0 L0,0 Z" fill="#dcfce7"/>
         </svg>
       </div>
       
-      {/* Bottom smooth wave - giống Up For Paws với độ cong lớn hơn */}
-      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '160px' }}>
-        <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
-          <path d="M0,160 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,160 L0,160 Z" fill="#14b8a6" opacity="0.6"/>
+      {/* Bottom smooth wave - blend tự nhiên với section tiếp theo (teal) */}
+      <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+          <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#ccfbf1"/>
         </svg>
       </div>
       
@@ -50,20 +47,34 @@ export default function CurriculumPreview() {
       <div className="absolute bottom-10 right-5 w-16 h-16 md:w-28 md:h-28 organic-blob bg-green-300/20 opacity-40" style={{ animationDelay: '1.5s' }}></div>
 
       <div className="container-custom relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-green-900">Chương Trình Học Cốt Lõi</h2>
-          <p className="text-lg text-green-800 max-w-2xl mx-auto mb-8">
+        <div className="text-center mb-16">
+          <div className="inline-block mb-4">
+            <span className="text-4xl animate-bounce-genz">🎯</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gradient-genz">Chương Trình Học Cốt Lõi</h2>
+          <p className="text-lg md:text-xl text-green-800 max-w-2xl mx-auto mb-8 leading-relaxed">
             Up for Paws? Up for Fun! Đây là những hoạt động thú cưng của bạn sẽ tận hưởng tại daycare mỗi ngày
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {coreActivities.map((activity, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" style={{ transformStyle: 'preserve-3d' }}>
+          {coreActivities.map((activity, index) => {
+            // Tạo sự méo không gian khác nhau cho mỗi card
+            const spatialDistortions = [
+              { rotateX: 2, rotateY: -1, skewX: -1.5, skewY: 0.5 },
+              { rotateX: -1, rotateY: 1.5, skewX: 1, skewY: -1 },
+              { rotateX: 1, rotateY: -1.5, skewX: -1, skewY: 1 },
+              { rotateX: -1.5, rotateY: 1, skewX: 1.5, skewY: -0.5 },
+            ]
+            const dist = spatialDistortions[index % spatialDistortions.length]
+            
+            return (
             <div
               key={index}
-              className="bg-green-100 rounded-2xl p-6 hover:shadow-2xl transition-all duration-300 border-2 border-green-300 relative overflow-hidden organic-card tilt-on-hover group"
+              className="card-genz bg-green-100 p-8 border-2 border-green-300 relative overflow-hidden group"
               style={{ 
-                transform: `rotate(${index % 2 === 0 ? '-1deg' : '1deg'})`,
+                transform: `perspective(600px) rotateX(${dist.rotateX}deg) rotateY(${dist.rotateY}deg) skewX(${dist.skewX}deg) skewY(${dist.skewY}deg)`,
+                transformStyle: 'preserve-3d',
                 animationDelay: `${index * 0.15}s`
               }}
             >
@@ -71,25 +82,26 @@ export default function CurriculumPreview() {
               <div className="absolute top-0 right-0 w-28 h-28 organic-blob bg-green-200/20 float-animation opacity-60"></div>
               <div className="absolute bottom-0 left-0 w-20 h-20 organic-blob bg-green-300/15 float-animation opacity-40" style={{ animationDelay: '1s' }}></div>
               
-              <div className="text-green-600 mb-4 relative z-10 transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+              <div className="text-green-600 mb-4 relative z-10 transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 text-4xl">
                 {activity.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-3 relative z-10 text-green-900">{activity.title}</h3>
+              <h3 className="text-xl font-bold mb-3 relative z-10 text-gradient-genz">{activity.title}</h3>
               <p className="text-green-800 relative z-10 leading-relaxed">{activity.description}</p>
               
               {/* Hover effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-green-200 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
             </div>
-          ))}
+            )
+          })}
         </div>
 
         <div className="text-center">
           <Link
             href="/curriculum"
-            className="inline-flex items-center space-x-2 bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg"
+            className="btn-genz-primary inline-flex items-center space-x-3"
           >
             <span>Xem Chương Trình Đầy Đủ</span>
-            <span className="text-xl">🐾</span>
+            <span className="text-xl animate-bounce-genz">🐾</span>
           </Link>
         </div>
       </div>

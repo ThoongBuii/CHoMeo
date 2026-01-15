@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { FiClock, FiTruck } from 'react-icons/fi'
 
 export const metadata: Metadata = {
   title: 'Bảng Giá - Chò Méo',
@@ -7,147 +8,258 @@ export const metadata: Metadata = {
 }
 
 export default function RatesPage() {
-  const pricingPlans = [
+  const pricingTiers = [
     {
-      name: 'Daycare Cơ Bản',
-      price: '500,000',
-      period: 'ngày',
-      features: [
-        'Chơi nhóm có giám sát',
-        'Hoạt động ngoài trời',
-        'Thời gian nghỉ ngơi',
-        'Cập nhật hình ảnh',
-      ],
-      color: 'green',
+      name: 'Petite',
+      weight: '1Kg – 4Kg',
+      price: '4.500.000',
+      sessions: '10',
+      color: 'from-green-100 to-green-200',
     },
     {
-      name: 'Daycare Premium',
-      price: '800,000',
-      period: 'ngày',
-      features: [
-        'Tất cả tính năng cơ bản',
-        'Huấn luyện lệnh cơ bản',
-        'Báo cáo tiến độ chi tiết',
-        'Hoạt động đặc biệt',
-        'Ưu tiên đặt chỗ',
-      ],
-      color: 'teal',
-      popular: true,
+      name: 'Small',
+      weight: '5Kg – 9Kg',
+      price: '4.700.000',
+      sessions: '10',
+      color: 'from-teal-100 to-teal-200',
     },
     {
-      name: 'Gói Tháng',
-      price: '15,000,000',
-      period: 'tháng',
-      features: [
-        '20 ngày daycare',
-        'Tất cả tính năng premium',
-        'Giảm giá 25%',
-        'Tư vấn miễn phí',
-        'Hỗ trợ 24/7',
-      ],
-      color: 'brown',
+      name: 'Medium',
+      weight: '10Kg – 14Kg',
+      price: '5.100.000',
+      sessions: '10',
+      color: 'from-green-100 to-green-200',
+    },
+    {
+      name: 'Large',
+      weight: '15Kg – 30Kg',
+      price: '5.500.000',
+      sessions: '10',
+      color: 'from-teal-100 to-teal-200',
     },
   ]
 
-  const additionalServices = [
-    { name: 'Dog Walk (1 lần)', price: '200,000' },
-    { name: 'Dog Walk (10 lần)', price: '1,800,000' },
-    { name: 'Huấn Luyện Cá Nhân', price: '1,500,000' },
-    { name: 'Huấn Luyện Nhóm', price: '800,000' },
-    { name: 'Boarding (1 đêm)', price: '600,000' },
-    { name: 'Grooming', price: '300,000' },
+  const packageNotes = [
+    'Gói có hiệu lực trong 4 tháng',
+    'Giảm giá cho gói dành cho thú cưng tham gia 2 lần/tuần trở lên',
+    'Giảm 20% cho thú cưng thứ 2 trong cùng hộ gia đình',
+    'Giảm 5% cho thú cưng được nhận nuôi từ trại cứu hộ',
   ]
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-green-500 to-green-700 text-white overflow-hidden pt-24 pb-16">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Bảng Giá</h1>
-            <p className="text-xl text-green-100">
+      <section className="relative overflow-hidden pt-24 pb-20" style={{ perspective: '1200px', backgroundColor: '#fef9e7' }}>
+        {/* Top wave */}
+        <div className="absolute top-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+          <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,90 C120,100 240,80 360,110 C480,140 600,120 720,130 C840,140 960,100 1080,110 C1200,120 1320,80 1440,90 L1440,0 L0,0 Z" fill="#fef9e7"/>
+          </svg>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="max-w-4xl mx-auto text-center" style={{ transform: 'perspective(1000px) rotateY(0.5deg) rotateX(-0.5deg)' }}>
+            <div className="inline-block mb-6">
+              <span className="text-6xl animate-bounce-genz">💰</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gradient-genz">
+              Bảng Giá
+            </h1>
+            <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
               Lựa chọn gói dịch vụ phù hợp với thú cưng của bạn
             </p>
           </div>
         </div>
-        {/* Jagged line */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0,0 L80,25 L160,8 L240,30 L320,5 L400,28 L480,10 L560,32 L640,8 L720,26 L800,6 L880,29 L960,9 L1040,27 L1120,11 L1200,25 L1280,7 L1360,30 L1440,12 L1440,0 Z" fill="white"/>
+
+        {/* Bottom smooth wave */}
+        <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+          <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#dcfce7"/>
           </svg>
         </div>
       </section>
 
-      {/* Pricing Plans */}
-      <section className="section-padding bg-gradient-to-br from-green-50 to-green-100">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {pricingPlans.map((plan, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-xl shadow-lg p-8 relative ${
-                  plan.popular ? 'ring-4 ring-teal-500 scale-105' : ''
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    Phổ Biến
-                  </div>
-                )}
-                <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                  <span className="text-gray-600"> VNĐ/{plan.period}</span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <span className="text-green-600 mt-1">✓</span>
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/signup"
-                  className={`w-full text-center block px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 ${
-                    plan.popular
-                      ? 'bg-teal-600 text-white hover:bg-teal-700'
-                      : 'bg-green-600 text-white hover:bg-green-700'
-                  }`}
+      {/* Pricing Tiers */}
+      <section className="section-padding bg-gradient-to-br from-green-50 via-green-100 to-green-150 relative overflow-hidden" style={{ perspective: '1000px' }}>
+        {/* Top wave */}
+        <div className="absolute top-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+          <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,90 C120,100 240,80 360,110 C480,140 600,120 720,130 C840,140 960,100 1080,110 C1200,120 1320,80 1440,90 L1440,0 L0,0 Z" fill="#dcfce7"/>
+          </svg>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" style={{ transformStyle: 'preserve-3d' }}>
+            {pricingTiers.map((tier, index) => {
+              const distortions = [
+                { rotateX: -1, rotateY: 1, skewX: 0.8, skewY: -0.5 },
+                { rotateX: 1, rotateY: -1, skewX: -0.8, skewY: 0.5 },
+                { rotateX: -0.8, rotateY: 0.8, skewX: 0.6, skewY: -0.4 },
+                { rotateX: 0.8, rotateY: -0.8, skewX: -0.6, skewY: 0.4 },
+              ]
+              const dist = distortions[index]
+
+              return (
+                <div
+                  key={tier.name}
+                  className={`card-genz bg-gradient-to-br ${tier.color} p-6 border-2 border-green-300 text-center group`}
+                  style={{
+                    transform: `perspective(600px) rotateX(${dist.rotateX}deg) rotateY(${dist.rotateY}deg) skewX(${dist.skewX}deg) skewY(${dist.skewY}deg)`,
+                    transformStyle: 'preserve-3d',
+                  }}
                 >
-                  Đăng Ký Ngay
-                </Link>
-              </div>
-            ))}
+                  <h3 className="text-2xl font-bold mb-2 text-gray-900">{tier.name}</h3>
+                  <p className="text-sm text-gray-700 mb-4">{tier.weight}</p>
+                  <div className="mb-4">
+                    <div className="text-4xl font-bold text-gray-900">{tier.price}</div>
+                    <p className="text-sm text-gray-700 mt-2">({tier.sessions} Buổi)</p>
+                  </div>
+                  <Link
+                    href="/signup"
+                    className="btn-genz-primary inline-block w-full"
+                  >
+                    Đăng Ký
+                  </Link>
+                </div>
+              )
+            })}
           </div>
 
-          {/* Additional Services */}
+          {/* Package Notes */}
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">Dịch Vụ Bổ Sung</h2>
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <div className="grid md:grid-cols-2 gap-6">
-                {additionalServices.map((service, index) => (
-                  <div key={index} className="flex justify-between items-center p-4 border-b border-gray-200 last:border-0">
-                    <span className="text-gray-700 font-medium">{service.name}</span>
-                    <span className="text-green-600 font-bold">{service.price} VNĐ</span>
-                  </div>
-                ))}
+            <ul className="space-y-3">
+              {packageNotes.map((note, index) => (
+                <li
+                  key={index}
+                  className="flex items-start space-x-3 text-green-900"
+                  style={{
+                    transform: `perspective(500px) rotateY(${index % 2 === 0 ? '-0.5' : '0.5'}deg)`,
+                  }}
+                >
+                  <span className="text-green-600 text-lg mt-0.5">•</span>
+                  <span className="text-base">{note}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom wave */}
+        <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+          <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#ccfbf1"/>
+          </svg>
+        </div>
+      </section>
+
+      {/* Transport Service */}
+      <section className="section-padding bg-gradient-to-br from-teal-50 via-teal-100 to-teal-150 relative overflow-hidden" style={{ perspective: '1000px' }}>
+        {/* Top wave */}
+        <div className="absolute top-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+          <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,90 C120,100 240,80 360,110 C480,140 600,120 720,130 C840,140 960,100 1080,110 C1200,120 1320,80 1440,90 L1440,0 L0,0 Z" fill="#ccfbf1"/>
+          </svg>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="inline-block mb-4">
+                <span className="text-5xl">🚐</span>
               </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient-genz">Xe Đưa Đón Thú Cưng</h2>
+            </div>
+
+            <div 
+              className="card-genz bg-white/80 backdrop-blur-sm p-8 border-2 border-teal-300"
+              style={{ transform: 'perspective(700px) rotateY(-0.5deg) rotateX(0.3deg)' }}
+            >
+              <p className="text-lg text-teal-900 font-semibold mb-6 text-center">
+                Thời gian đưa đón có thể trong khoảng:
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="flex items-start space-x-3">
+                  <FiClock className="w-6 h-6 text-teal-700 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-teal-900 mb-1">Đón:</p>
+                    <p className="text-teal-800 italic">7:00 SA – 9:00 SA</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <FiTruck className="w-6 h-6 text-teal-700 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-teal-900 mb-1">Trả:</p>
+                    <p className="text-teal-800 italic">3:00 CH – 5:30 CH</p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-sm text-teal-800 text-center italic">
+                Dịch vụ đưa đón của chúng tôi tùy thuộc vào vị trí và thời gian yêu cầu của bạn.
+              </p>
             </div>
           </div>
+        </div>
 
-          {/* Note */}
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">
-              * Giá có thể thay đổi tùy theo nhu cầu và thời gian. Vui lòng liên hệ để được tư vấn chi tiết.
-            </p>
-            <Link
-              href="/contact"
-              className="text-green-600 hover:text-green-700 font-semibold underline"
+        {/* Bottom wave */}
+        <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+          <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#dcfce7"/>
+          </svg>
+        </div>
+      </section>
+
+      {/* Adventures Package */}
+      <section className="section-padding bg-gradient-to-br from-green-50 via-green-100 to-green-150 relative overflow-hidden" style={{ perspective: '1000px' }}>
+        {/* Top wave */}
+        <div className="absolute top-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+          <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,90 C120,100 240,80 360,110 C480,140 600,120 720,130 C840,140 960,100 1080,110 C1200,120 1320,80 1440,90 L1440,0 L0,0 Z" fill="#dcfce7"/>
+          </svg>
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="inline-block mb-4">
+                <span className="text-5xl">🏞️</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gradient-genz">Chò Méo Adventures</h2>
+            </div>
+
+            <div 
+              className="card-genz bg-gradient-to-br from-green-100 to-green-200 p-8 border-2 border-green-300 text-center"
+              style={{ transform: 'perspective(700px) rotateY(0.5deg) rotateX(-0.3deg)' }}
             >
-              Liên Hệ Tư Vấn
-            </Link>
+              <p className="text-lg text-green-900 leading-relaxed mb-6">
+                Tham gia cùng chúng tôi trong một chuyến phiêu lưu! Dịch vụ đi dạo tiện lợi của chúng tôi 
+                sẽ khám phá các địa điểm khác nhau khắp thành phố cùng thú cưng của bạn. 
+                Dẫn dắt bởi các chuyên viên chuyên nghiệp, thú cưng của bạn sẽ được ra khỏi nhà để chạy, 
+                giao lưu và vui chơi!
+              </p>
+
+              <div className="mb-6">
+                <div className="text-4xl font-bold text-green-900">4.700.000</div>
+                <p className="text-sm text-green-800 mt-2">(10 Buổi)</p>
+              </div>
+
+              <Link
+                href="/signup"
+                className="btn-genz-primary inline-flex items-center space-x-2"
+              >
+                <span>Đăng Ký Ngay</span>
+                <span className="text-xl">🚀</span>
+              </Link>
+            </div>
           </div>
+        </div>
+
+        {/* Bottom wave */}
+        <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+          <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#ccfbf1"/>
+          </svg>
         </div>
       </section>
     </div>
