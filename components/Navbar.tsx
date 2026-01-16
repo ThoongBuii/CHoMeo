@@ -64,17 +64,15 @@ export default function Navbar() {
           </div>
 
           {/* Logo ở giữa */}
-          <Link href="/" className="flex items-center justify-center flex-shrink-0 mx-4 md:mx-8 group">
-            <div className="relative h-14 md:h-16 w-auto transition-all duration-300 hover:scale-105">
-              <Image
-                src="/images/logo-cho-meo.jpeg"
-                alt="Chò Méo - Trường Học Thú Cưng"
-                width={200}
-                height={64}
-                className="object-contain h-full w-auto"
-                priority
-              />
-            </div>
+          <Link href="/" className="flex items-center justify-center flex-shrink-0 mx-4 md:mx-8 group transition-all duration-300 hover:opacity-80">
+            <Image
+              src="/images/logo-cho-meo.png"
+              alt="Chò Méo - Trường Học Thú Cưng"
+              width={180}
+              height={72}
+              className="h-16 md:h-20 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Right Navigation Items */}
