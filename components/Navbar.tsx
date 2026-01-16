@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FiMenu, FiX, FiChevronDown } from 'react-icons/fi'
 
 export default function Navbar() {
@@ -63,17 +64,17 @@ export default function Navbar() {
           </div>
 
           {/* Logo ở giữa */}
-          <Link href="/" className="flex flex-col items-center justify-center flex-shrink-0 mx-8 group">
-            <span className={`text-2xl md:text-3xl font-bold transition-colors ${
-              isScrolled ? 'text-green-600' : 'text-gray-900'
-            }`}>
-              Chò Méo
-            </span>
-            <span className={`text-xs md:text-sm font-medium transition-colors ${
-              isScrolled ? 'text-gray-600' : 'text-gray-700'
-            }`}>
-              Trường Học Thú Cưng
-            </span>
+          <Link href="/" className="flex items-center justify-center flex-shrink-0 mx-4 md:mx-8 group">
+            <div className="relative h-14 md:h-16 w-auto transition-all duration-300 hover:scale-105">
+              <Image
+                src="/images/logo-cho-meo.jpeg"
+                alt="Chò Méo - Trường Học Thú Cưng"
+                width={200}
+                height={64}
+                className="object-contain h-full w-auto"
+                priority
+              />
+            </div>
           </Link>
 
           {/* Right Navigation Items */}
