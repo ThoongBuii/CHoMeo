@@ -64,12 +64,12 @@ export default function Navbar() {
           </div>
 
           {/* Logo ở giữa */}
-          <Link href="/" className="flex items-center justify-center flex-shrink-0 mx-4 md:mx-8 group transition-all duration-300 hover:opacity-80">
+          <Link href="/" className="flex items-center justify-center flex-shrink-0 mx-4 md:mx-8 group transition-all duration-300 hover:opacity-90">
             <Image
-              src="/images/logo-cho-meo.png"
+              src="/images/logo-cho-meo-new-removebg-preview.png"
               alt="Chò Méo - Trường Học Thú Cưng"
-              width={180}
-              height={72}
+              width={200}
+              height={80}
               className="h-16 md:h-20 w-auto object-contain"
               priority
             />
