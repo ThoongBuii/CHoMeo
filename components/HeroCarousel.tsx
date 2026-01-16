@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 interface Slide {
@@ -12,6 +13,7 @@ interface Slide {
   buttonText: string
   buttonLink: string
   image: string
+  imageAlt: string
 }
 
 export default function HeroCarousel() {
@@ -23,25 +25,28 @@ export default function HeroCarousel() {
       description: "Chăm sóc chuyên nghiệp, tận tâm và đáng tin cậy cho thú cưng của bạn",
       buttonText: "Liên Hệ Ngay",
       buttonLink: "/contact",
-      image: "🐕",
+      image: "/images/hero-slide-1.svg",
+      imageAlt: "Happy dog at Chò Méo daycare",
     },
     {
       id: 2,
-      title: "Let's go for a walk with Chò Méo Adventures!",
-      subtitle: "Curious canines alert!",
-      description: "Dịch vụ đi dạo và chạy bộ chuyên nghiệp sẽ thỏa mãn nhu cầu khám phá và tập thể dục hàng ngày của thú cưng bạn!",
+      title: "Đi Dạo Cùng Chò Méo",
+      subtitle: "Dịch Vụ Đi Dạo Cho Chó",
+      description: "Dịch vụ đi dạo sẽ thỏa mãn nhu cầu khám phá và tập thể dục hàng ngày của thú cưng bạn!",
       buttonText: "Tìm Hiểu Thêm",
       buttonLink: "/services",
-      image: "🚶",
+      image: "/images/hero-slide-2.svg",
+      imageAlt: "Dog walking service",
     },
     {
       id: 3,
-      title: "Fun and meaningful activities for your dogs.",
-      subtitle: "Hoạt Động Vui Chơi Có Ý Nghĩa",
+      title: "Hoạt Động Vui Chơi",
+      subtitle: "Có Ý Nghĩa Cho Thú Cưng",
       description: "Chương trình daycare của chúng tôi được thiết kế để tham gia vào hành vi bản năng của thú cưng, mang lại một ngày vui vẻ và ý nghĩa!",
       buttonText: "Xem Chương Trình",
       buttonLink: "/curriculum",
-      image: "🎾",
+      image: "/images/hero-slide-3.svg",
+      imageAlt: "Fun activities for pets",
     },
   ]
 
@@ -135,13 +140,20 @@ export default function HeroCarousel() {
                     </div>
                   </div>
 
-                  {/* Right Side - Image/Icon với spatial distortion */}
+                  {/* Right Side - Image với spatial distortion */}
                   <div className="flex items-center justify-center relative" style={{ transform: 'perspective(1000px) rotateY(-1deg) rotateX(0.5deg) skewX(0.5deg)' }}>
-                    <div className="relative z-10">
-                      <div className="text-9xl md:text-[12rem] lg:text-[16rem] opacity-90 float-animation relative" style={{ transform: 'rotate(-1deg) scale(1.02)' }}>
-                        {slide.image}
+                    <div className="relative z-10 w-full max-w-md lg:max-w-lg">
+                      <div className="relative float-animation" style={{ transform: 'rotate(-1deg)' }}>
+                        <Image
+                          src={slide.image}
+                          alt={slide.imageAlt}
+                          width={600}
+                          height={600}
+                          className="w-full h-auto opacity-90"
+                          priority={index === 0}
+                        />
                         {/* Glow effect */}
-                        <div className="absolute inset-0 blur-3xl opacity-20 bg-green-300/30 -z-10"></div>
+                        <div className="absolute inset-0 blur-3xl opacity-20 bg-green-300/30 -z-10 rounded-full"></div>
                       </div>
                     </div>
                   </div>

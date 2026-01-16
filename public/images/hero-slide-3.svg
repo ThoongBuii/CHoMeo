@@ -1,0 +1,40 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Playful dog with ball -->
+  <circle cx="320" cy="260" r="110" fill="#FFB347"/>
+  <!-- Ears flopping -->
+  <ellipse cx="250" cy="220" rx="38" ry="75" fill="#FF8C00" transform="rotate(-25 250 220)"/>
+  <ellipse cx="390" cy="220" rx="38" ry="75" fill="#FF8C00" transform="rotate(25 390 220)"/>
+  <!-- Eyes (happy) -->
+  <circle cx="280" cy="250" r="18" fill="#fff"/>
+  <circle cx="360" cy="250" r="18" fill="#fff"/>
+  <circle cx="285" cy="250" r="10" fill="#000"/>
+  <circle cx="355" cy="250" r="10" fill="#000"/>
+  <!-- Nose -->
+  <ellipse cx="320" cy="285" rx="22" ry="18" fill="#000"/>
+  <!-- Smile -->
+  <path d="M 280 300 Q 320 340 360 300" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Tongue out (excited) -->
+  <ellipse cx="320" cy="325" rx="18" ry="12" fill="#FF69B4"/>
+  <!-- Body (jumping/playing) -->
+  <ellipse cx="310" cy="420" rx="130" ry="95" fill="#FFB347" transform="rotate(-5 310 420)"/>
+  <!-- Paws (in air) -->
+  <circle cx="200" cy="480" r="32" fill="#FF8C00"/>
+  <circle cx="260" cy="500" r="32" fill="#FF8C00"/>
+  <circle cx="360" cy="500" r="32" fill="#FF8C00"/>
+  <circle cx="420" cy="480" r="32" fill="#FF8C00"/>
+  <!-- Tail (wagging high) -->
+  <path d="M 420 390 Q 480 340 500 400 Q 490 430 470 410" fill="#FFB347" stroke="#FF8C00" stroke-width="2"/>
+  <!-- Tennis ball -->
+  <circle cx="150" cy="180" r="50" fill="#C3E87E"/>
+  <path d="M 110 160 Q 130 180 110 200" stroke="#fff" stroke-width="3" fill="none"/>
+  <path d="M 190 160 Q 170 180 190 200" stroke="#fff" stroke-width="3" fill="none"/>
+  <!-- Motion lines -->
+  <line x1="80" y1="160" x2="50" y2="150" stroke="#999" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <line x1="70" y1="180" x2="40" y2="180" stroke="#999" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <line x1="80" y1="200" x2="50" y2="210" stroke="#999" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <!-- Stars (excitement) -->
+  <g opacity="0.6">
+    <path d="M 480 200 L 485 215 L 500 215 L 488 223 L 493 238 L 480 228 L 467 238 L 472 223 L 460 215 L 475 215 Z" fill="#FFD700"/>
+    <path d="M 520 260 L 523 270 L 533 270 L 525 276 L 528 286 L 520 279 L 512 286 L 515 276 L 507 270 L 517 270 Z" fill="#FFD700"/>
+  </g>
+</svg>

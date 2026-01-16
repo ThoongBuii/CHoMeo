@@ -1,0 +1,31 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Happy Dog -->
+  <circle cx="300" cy="250" r="120" fill="#F4A460"/>
+  <!-- Ears -->
+  <ellipse cx="230" cy="200" rx="40" ry="80" fill="#D2691E" transform="rotate(-20 230 200)"/>
+  <ellipse cx="370" cy="200" rx="40" ry="80" fill="#D2691E" transform="rotate(20 370 200)"/>
+  <!-- Eyes -->
+  <circle cx="260" cy="240" r="20" fill="#fff"/>
+  <circle cx="340" cy="240" r="20" fill="#fff"/>
+  <circle cx="265" cy="240" r="12" fill="#000"/>
+  <circle cx="335" cy="240" r="12" fill="#000"/>
+  <!-- Nose -->
+  <ellipse cx="300" cy="280" rx="25" ry="20" fill="#000"/>
+  <!-- Smile -->
+  <path d="M 260 290 Q 300 330 340 290" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Tongue -->
+  <ellipse cx="300" cy="315" rx="20" ry="15" fill="#FF69B4"/>
+  <!-- Body -->
+  <ellipse cx="300" cy="430" rx="140" ry="100" fill="#F4A460"/>
+  <!-- Paws -->
+  <circle cx="220" cy="510" r="35" fill="#D2691E"/>
+  <circle cx="280" cy="520" r="35" fill="#D2691E"/>
+  <circle cx="320" cy="520" r="35" fill="#D2691E"/>
+  <circle cx="380" cy="510" r="35" fill="#D2691E"/>
+  <!-- Tail -->
+  <path d="M 420 400 Q 480 350 500 420 Q 490 450 470 430" fill="#F4A460" stroke="#D2691E" stroke-width="2"/>
+  <!-- Heart decoration -->
+  <g transform="translate(100, 100)">
+    <path d="M 50 30 C 50 20 40 10 30 10 C 20 10 10 20 10 30 C 10 50 30 60 50 70 C 70 60 90 50 90 30 C 90 20 80 10 70 10 C 60 10 50 20 50 30 Z" fill="#FF6B6B" opacity="0.3"/>
+  </g>
+</svg>

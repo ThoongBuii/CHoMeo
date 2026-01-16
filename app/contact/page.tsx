@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { FiPhone, FiMail, FiFacebook, FiInstagram, FiTwitter, FiStar } from 'react-icons/fi'
+import { EMAILJS_CONFIG } from '@/config/emailjs'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -10,14 +12,37 @@ export default function ContactPage() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: '', email: '', message: '' })
-    }, 3000)
+    setSending(true)
+    setError('')
+
+    try {
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        EMAILJS_CONFIG.publicKey
+      )
+      
+      setSubmitted(true)
+      setTimeout(() => {
+        setSubmitted(false)
+        setFormData({ name: '', email: '', message: '' })
+      }, 5000)
+    } catch (err) {
+      console.error('EmailJS error:', err)
+      setError('Không thể gửi tin nhắn. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua số điện thoại.')
+    } finally {
+      setSending(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -199,8 +224,20 @@ export default function ContactPage() {
                       className="w-full px-4 py-3 bg-white border-2 border-teal-300 rounded-lg focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-200 resize-none"
                     />
                   </div>
-                  <button type="submit" className="btn-genz-primary w-full">
-                    Gửi Tin Nhắn
+
+                  {error && (
+                    <div className="bg-red-100 border-2 border-red-300 rounded-lg p-4 text-red-800 text-sm">
+                      <p className="font-semibold">❌ Lỗi:</p>
+                      <p>{error}</p>
+                    </div>
+                  )}
+
+                  <button 
+                    type="submit" 
+                    disabled={sending}
+                    className="btn-genz-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {sending ? 'Đang gửi...' : 'Gửi Tin Nhắn'}
                   </button>
                 </form>
               )}

@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import emailjs from '@emailjs/browser'
+import { EMAILJS_CONFIG } from '@/config/emailjs'
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState({
@@ -24,28 +26,89 @@ export default function SignUpPage() {
     source: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({
-        ownerName: '',
-        email: '',
-        phone: '',
-        service: '',
-        address: '',
-        country: 'Vietnam',
-        dogName: '',
-        breed: '',
-        sex: '',
-        ageYears: '',
-        ageMonths: '',
-        weight: '',
-        source: '',
-      })
-    }, 3000)
+    setSending(true)
+    setError('')
+
+    // Format message cho email
+    const serviceLabels: Record<string, string> = {
+      'daycare-transport': 'Daycare + Đưa Đón 2 Chiều',
+      'daycare-only': 'Daycare (Không Đưa Đón)',
+      'adventures': 'Chò Méo Adventures (Dog Walks)',
+    }
+
+    const sourceLabels: Record<string, string> = {
+      'facebook': 'Facebook',
+      'instagram': 'Instagram',
+      'search': 'Công Cụ Tìm Kiếm',
+      'friend': 'Bạn Bè Giới Thiệu',
+      'other': 'Khác',
+    }
+
+    const message = `
+📋 THÔNG TIN ĐĂNG KÝ MỚI
+
+👤 THÔNG TIN CHỦ SỞ HỮU:
+- Tên: ${formData.ownerName}
+- Email: ${formData.email}
+- Số điện thoại: ${formData.phone}
+
+🐕 THÔNG TIN THÚ CƯNG:
+- Tên thú cưng: ${formData.dogName}
+- Giống: ${formData.breed}
+- Giới tính: ${formData.sex === 'male' ? 'Đực' : 'Cái'}
+- Tuổi: ${formData.ageYears} năm ${formData.ageMonths} tháng
+- Cân nặng: ${formData.weight} kg
+
+🎯 DỊCH VỤ:
+- Dịch vụ: ${serviceLabels[formData.service] || formData.service}
+${formData.address ? `- Địa chỉ đưa đón: ${formData.address}, ${formData.country}` : ''}
+
+📢 NGUỒN:
+- Biết đến qua: ${sourceLabels[formData.source] || formData.source}
+    `.trim()
+
+    try {
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        {
+          from_name: formData.ownerName,
+          from_email: formData.email,
+          message: message,
+        },
+        EMAILJS_CONFIG.publicKey
+      )
+      
+      setSubmitted(true)
+      setTimeout(() => {
+        setSubmitted(false)
+        setFormData({
+          ownerName: '',
+          email: '',
+          phone: '',
+          service: '',
+          address: '',
+          country: 'Vietnam',
+          dogName: '',
+          breed: '',
+          sex: '',
+          ageYears: '',
+          ageMonths: '',
+          weight: '',
+          source: '',
+        })
+      }, 5000)
+    } catch (err) {
+      console.error('EmailJS error:', err)
+      setError('Không thể gửi đăng ký. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua số điện thoại: +84 123 456 789')
+    } finally {
+      setSending(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -363,12 +426,20 @@ export default function SignUpPage() {
                     <p>* Thú cưng lần đầu cần trải qua đánh giá MIỄN PHÍ để đảm bảo phù hợp với chương trình daycare.</p>
                   </div>
 
+                  {error && (
+                    <div className="bg-red-100 border-2 border-red-300 rounded-lg p-4 text-red-800 text-sm">
+                      <p className="font-semibold">❌ Lỗi:</p>
+                      <p>{error}</p>
+                    </div>
+                  )}
+
                   <button 
-                    type="submit" 
-                    className="btn-genz-primary w-full text-lg"
+                    type="submit"
+                    disabled={sending}
+                    className="btn-genz-primary w-full text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ transform: 'perspective(500px) rotateY(0.2deg)' }}
                   >
-                    Gửi Đăng Ký 🚀
+                    {sending ? 'Đang gửi... ⏳' : 'Gửi Đăng Ký 🚀'}
                   </button>
                 </form>
               </div>
