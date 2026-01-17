@@ -436,7 +436,7 @@ ${formData.address ? `- Địa chỉ đưa đón: ${formData.address}, ${formDat
                   <button 
                     type="submit"
                     disabled={sending}
-                    className="btn-genz-primary w-full text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-genz-primary w-full text-lg disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
                     style={{ transform: 'perspective(500px) rotateY(0.2deg)' }}
                   >
                     {sending ? 'Đang gửi... ⏳' : 'Gửi Đăng Ký 🚀'}

@@ -235,7 +235,7 @@ export default function ContactPage() {
                   <button 
                     type="submit" 
                     disabled={sending}
-                    className="btn-genz-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-genz-primary w-full disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
                   >
                     {sending ? 'Đang gửi...' : 'Gửi Tin Nhắn'}
                   </button>

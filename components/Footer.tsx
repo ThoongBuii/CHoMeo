@@ -166,7 +166,7 @@ export default function Footer() {
                 <button 
                   type="submit" 
                   disabled={sending}
-                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative z-10"
                 >
                   {sending ? 'Đang gửi...' : 'Gửi Tin Nhắn'}
                 </button>
