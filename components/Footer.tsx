@@ -104,7 +104,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Form - Right Column */}
-          <div style={{ transform: 'perspective(800px) rotateY(1deg) rotateX(-0.5deg) skewX(0.5deg)' }}>
+          <div className="relative z-20" style={{ transform: 'perspective(800px) rotateY(1deg) rotateX(-0.5deg) skewX(0.5deg)' }}>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Gửi Tin Nhắn</h2>
             {submitted ? (
               <div className="bg-green-200 border-2 border-green-400 rounded-lg p-6 text-green-900">

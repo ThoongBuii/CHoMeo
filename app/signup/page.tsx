@@ -182,7 +182,7 @@ ${formData.address ? `- Địa chỉ đưa đón: ${formData.address}, ${formDat
               </div>
             ) : (
               <div 
-                className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-orange-300"
+                className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-orange-300 relative z-20"
                 style={{ transform: 'perspective(700px) rotateY(-0.3deg) rotateX(0.3deg)' }}
               >
                 <h2 className="text-3xl font-bold mb-2 text-center text-gray-900">Bắt Đầu Nào!</h2>

@@ -171,7 +171,7 @@ export default function ContactPage() {
 
             {/* Contact Form - Right Column */}
             <div 
-              className="card-genz bg-white/80 backdrop-blur-sm p-8 border-2 border-teal-300"
+              className="card-genz bg-white/80 backdrop-blur-sm p-8 border-2 border-teal-300 relative z-20"
               style={{ transform: 'perspective(800px) rotateY(1deg) rotateX(-0.5deg) skewX(0.5deg)' }}
             >
               <h2 className="text-3xl font-bold mb-6 text-teal-900">Gửi Tin Nhắn</h2>
