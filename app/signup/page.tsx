@@ -448,7 +448,7 @@ ${formData.address ? `- Địa chỉ đưa đón: ${formData.address}, ${formDat
         </div>
 
         {/* Bottom wave */}
-        <div className="absolute bottom-0 left-0 right-0 z-0" style={{ height: '150px' }}>
+        <div className="absolute bottom-0 left-0 right-0 -z-10" style={{ height: '150px' }}>
           <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
             <path d="M0,90 C120,50 240,70 360,100 C480,130 600,110 720,130 C840,150 960,90 1080,110 C1200,130 1320,70 1440,90 L1440,150 L0,150 Z" fill="#ccfbf1"/>
           </svg>
