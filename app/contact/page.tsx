@@ -171,8 +171,8 @@ export default function ContactPage() {
 
             {/* Contact Form - Right Column */}
             <div 
-              className="card-genz bg-white/80 backdrop-blur-sm p-8 border-2 border-teal-300 relative z-20"
-              style={{ transform: 'perspective(800px) rotateY(1deg) rotateX(-0.5deg) skewX(0.5deg)' }}
+              className="card-genz bg-white/80 backdrop-blur-sm p-8 border-2 border-teal-300 relative"
+              style={{ zIndex: 50 }}
             >
               <h2 className="text-3xl font-bold mb-6 text-teal-900">Gửi Tin Nhắn</h2>
               {submitted ? (
@@ -235,7 +235,8 @@ export default function ContactPage() {
                   <button 
                     type="submit" 
                     disabled={sending}
-                    className="btn-genz-primary w-full disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
+                    className="btn-genz-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{ position: 'relative', zIndex: 100 }}
                   >
                     {sending ? 'Đang gửi...' : 'Gửi Tin Nhắn'}
                   </button>

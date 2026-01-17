@@ -104,7 +104,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Form - Right Column */}
-          <div className="relative z-20" style={{ transform: 'perspective(800px) rotateY(1deg) rotateX(-0.5deg) skewX(0.5deg)' }}>
+          <div className="relative" style={{ zIndex: 50 }}>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Gửi Tin Nhắn</h2>
             {submitted ? (
               <div className="bg-green-200 border-2 border-green-400 rounded-lg p-6 text-green-900">
@@ -166,7 +166,8 @@ export default function Footer() {
                 <button 
                   type="submit" 
                   disabled={sending}
-                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative z-10"
+                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  style={{ position: 'relative', zIndex: 100 }}
                 >
                   {sending ? 'Đang gửi...' : 'Gửi Tin Nhắn'}
                 </button>

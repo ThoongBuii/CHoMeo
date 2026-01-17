@@ -182,8 +182,8 @@ ${formData.address ? `- Địa chỉ đưa đón: ${formData.address}, ${formDat
               </div>
             ) : (
               <div 
-                className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-orange-300 relative z-20"
-                style={{ transform: 'perspective(700px) rotateY(-0.3deg) rotateX(0.3deg)' }}
+                className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-orange-300 relative"
+                style={{ zIndex: 50 }}
               >
                 <h2 className="text-3xl font-bold mb-2 text-center text-gray-900">Bắt Đầu Nào!</h2>
                 <p className="text-center text-gray-700 mb-8">Điền thông tin để đăng ký dịch vụ</p>
@@ -436,8 +436,8 @@ ${formData.address ? `- Địa chỉ đưa đón: ${formData.address}, ${formDat
                   <button 
                     type="submit"
                     disabled={sending}
-                    className="btn-genz-primary w-full text-lg disabled:opacity-50 disabled:cursor-not-allowed relative z-10"
-                    style={{ transform: 'perspective(500px) rotateY(0.2deg)' }}
+                    className="btn-genz-primary w-full text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{ position: 'relative', zIndex: 100 }}
                   >
                     {sending ? 'Đang gửi... ⏳' : 'Gửi Đăng Ký 🚀'}
                   </button>
